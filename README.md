@@ -4,21 +4,32 @@
 
 This framework allows `.jss` or `.js` files to be executed as CGI scripts using Node.js under Apache and any webserver implementing a the cgi 1.1 spec. It replicates a PHP-style CGI environment including `_GET`, `_POST`, `_FILES`, `_SERVER`, and `_SESSION`.
 
-## 📁 File Structure
+cgiNode.js is the main script handling the varaible creation file transfer, query to variable mappings etc... 
+exec.js is the executing script, creating the context or evaluating the user script. It has 3 modes. 
+	1. evaluation mode where the target script is run in same space, sandbox mode
+ 	2. sandbox mode where target script is run in a new isolated process
+  	3. cached script, where initial run of script is translated and stored to be run in sandbox mode by node.
 
+## 📁 File Structure
+Example setup
 ```
 └── libs/
     └── cgi-node/
         ├── cgiNode.js
         ├── exec.js
 		├── uploads/
-		└── sessions/
+		├── sessions/
+                └── jss_cache/
 public_html/
 ├── test.jss
 └── upload.jss
 
 ```
-
+folders
+   cgiNode.js creates 3 folders or assumes them to exist. (paths should and can be updated to your liking.
+uploads/		# are where the uploaded files will stored to be passed to the executing script/
+sessions/		# this is by default where 
+jss_cache/		#(optional) folder where the translated scripts will live, in order to take advantage of nodejs compile, this is only valid if evCompiled() 
 ---
 
 ## 📘 cgiNode.js
