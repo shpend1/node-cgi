@@ -25,11 +25,10 @@ public_html/
 └── upload.jss
 
 ```
-folders
-   cgiNode.js creates 3 folders or assumes them to exist. (paths should and can be updated to your liking.
-uploads/		# are where the uploaded files will stored to be passed to the executing script/
-sessions/		# this is by default where 
-jss_cache/		#(optional) folder where the translated scripts will live, in order to take advantage of nodejs compile, this is only valid if evCompiled() 
+- folders  cgiNode.js creates 3 folders or assumes them to exist. (paths should and can be updated to your liking.
+	- uploads/		# are where the uploaded files will stored to be passed to the executing script/
+	- sessions/		# this is by default where 
+	- jss_cache/		#(optional) folder where the translated scripts will live, in order to take advantage of nodejs compile, this is only valid if evCompiled() 
 ---
 
 ## 📘 cgiNode.js
