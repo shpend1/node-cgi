@@ -35,12 +35,21 @@ function exit(msg = '') {
     process.stdout.write(headerBuffer + '\r\n');
     headersSent = true;
   }
-  if (msg) process.stdout.write(msg);
   process.stdout.write(bodyBuffer);
   saveSession();
   
-  process.stdout.end();
-  process.exit(0);
+  
+  if (msg) 
+  {
+	  process.stdout.write(msg, () => {
+        //console.error('Data has been flushed.');
+		process.exit(0);
+    });
+	  //console.error(msg);
+  }
+  
+  
+  
 }
 
 function populateServerVars() {
